@@ -1,0 +1,450 @@
+:root {
+  --border-color:rgba(234,234,245,1);
+  --gutters:3px;
+  --bg:rgb(39, 39, 44);
+  --bg2:rgb(248,248,242);
+  --text:white;
+  --text2:black;
+  --highlight:rgba(234,234,245,.2);
+  --highlight2:rgba(60,50,50,.1);
+  --active:chartreuse;
+}
+
+body {
+  min-width: 400px;
+  font-family: Tahoma;
+  color: var(--text);
+  background-color: var(--bg);
+  display: flex;
+  flex-direction: column;
+  place-items: center center;
+  font-size: clamp(0.7em, 2vmin, 1em);
+}
+body #lightMode {
+  max-height: 100px;
+  margin: 2px;
+  text-align: right;
+  width: 100%;
+  margin-bottom: 5px;
+}
+body #lightMode span {
+  font-size: 150%;
+  padding: 5px;
+}
+body #lightMode span.disabled {
+  filter: grayscale(100%);
+}
+body #lightMode span:hover {
+  background-color: var(--highlight);
+  cursor: pointer;
+}
+body a {
+  color: orange;
+}
+body select {
+  background-color: var(--bg);
+  color: var(--text);
+  font-size: inherit;
+}
+
+#header {
+  display: flex;
+}
+#header #headerCell1 {
+  flex: 1 1 auto;
+  max-width: 850px;
+  min-width: 250px;
+  display: flex;
+  place-items: center center;
+}
+#header #headerCell1 #card {
+  position: relative;
+  border: 5px double var(--text);
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px;
+}
+#header #headerCell1 #card span:nth-child(2) {
+  /*SYMBOL*/
+  font-family: "Marcellus", serif;
+  font-size: 3em;
+  font-weight: bold;
+  padding: 2px;
+}
+#header #headerCell1 #card span:nth-child(3) {
+  /*CATEGORY*/
+  position: absolute;
+  font-family: monospace;
+  right: 10px;
+}
+#header #headerCell1 #card span:nth-child(3) span {
+  filter: invert(1) grayscale(1) contrast(50);
+  display: inline-block;
+  padding: 2px;
+}
+
+#details {
+  padding: 5px;
+  column-count: 3;
+}
+#details div {
+  padding: 2px;
+  break-inside: avoid-column;
+  background-color: var(--highlight);
+  margin: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#details div.selected, #details div.clickable:hover {
+  background-color: yellow;
+  color: var(--bg);
+  cursor: pointer;
+}
+#details div span {
+  padding: 0px;
+  flex: 0 1 auto;
+}
+#details div span:nth-child(1) {
+  margin-right: 5px;
+}
+#details div span:nth-child(2) {
+  font-size: 90%;
+  display: flex;
+}
+#details div span:nth-child(2) span {
+  flex: 0 1 auto;
+}
+
+#theTable {
+  display: grid;
+  margin: 5px;
+  grid-gap: var(--gutters);
+  /*THE GRID*/
+}
+#theTable #controls label, #theTable #controls input, #theTable #controls select {
+  display: block;
+  box-sizing: border-box;
+}
+#theTable #connector {
+  display: grid;
+  place-items: center center;
+  font-size: 70%;
+}
+#theTable #connector div {
+  padding: 2px;
+}
+#theTable #connector div:nth-child(3) {
+  font-size: 200%;
+}
+#theTable > div:not([id^=controls]):not([id^=connector]) {
+  padding: 5px;
+  box-shadow: -var(--gutters) 0 0 0 var(--border-color), 0 var(--gutters) 0 0 var(--border-color), var(--gutters) var(--gutters) 0 0 var(--border-color), var(--gutters) 0 0 0 var(--border-color), 0 var(--gutters) 0 0 var(--border-color);
+}
+#theTable > div:not([id^=controls]):not([id^=connector]):hover {
+  transform: scale(1.5);
+  z-index: 3;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.8);
+}
+#theTable > div:not([id^=controls]):not([id^=connector]) span {
+  display: block;
+  filter: invert(1) grayscale(1) contrast(50);
+}
+#theTable > div:not([id^=controls]):not([id^=connector]) span:nth-child(1) {
+  /*ATOMIC NUMBER*/
+}
+#theTable > div:not([id^=controls]):not([id^=connector]) span:nth-child(2) {
+  /*SYMBOL*/
+  font-size: 200%;
+  font-weight: bold;
+  font-family: "Marcellus", serif;
+}
+#theTable > div:not([id^=controls]):not([id^=connector]) span:nth-child(3) {
+  /*NAME*/
+}
+#theTable > div:not([id^=controls]):not([id^=connector]) span:nth-child(4) {
+  /*ATOMIC MASS OR VARIABLE!*/
+  font-size: 90%;
+}
+#theTable > div:not([id^=controls]):not([id^=connector]).active {
+  z-index: 2;
+  box-shadow: var(--gutters) calc( -1 * var(--gutters)) 0 0 var(--active), calc( -1 * var(--gutters)) var(--gutters) 0 0 var(--active), var(--gutters) var(--gutters) 0 0 var(--active), calc( -1 * var(--gutters)) calc( -1 * var(--gutters)) 0 0 var(--active);
+}
+#theTable div#controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row: 1/4;
+  grid-column: 4/13;
+  font-size: 90%;
+  grid-gap: 2px;
+  margin: 5px;
+}
+#theTable div#connector {
+  grid-row: 6/9;
+  grid-column: 3/4;
+}
+#theTable div.row1 {
+  grid-row: 1/2;
+}
+#theTable div.row2 {
+  grid-row: 2/3;
+}
+#theTable div.row3 {
+  grid-row: 3/4;
+}
+#theTable div.row4 {
+  grid-row: 4/5;
+}
+#theTable div.row5 {
+  grid-row: 5/6;
+}
+#theTable div.row6 {
+  grid-row: 6/7;
+}
+#theTable div.row7 {
+  grid-row: 7/8;
+}
+#theTable div.row8 {
+  grid-row: 8/9;
+}
+#theTable div.row9 {
+  grid-row: 9/10;
+}
+#theTable div.row10 {
+  grid-row: 10/11;
+}
+#theTable div.col1 {
+  grid-column: 1/2;
+}
+#theTable div.col2 {
+  grid-column: 2/3;
+}
+#theTable div.col3 {
+  grid-column: 3/4;
+}
+#theTable div.col4 {
+  grid-column: 4/5;
+}
+#theTable div.col5 {
+  grid-column: 5/6;
+}
+#theTable div.col6 {
+  grid-column: 6/7;
+}
+#theTable div.col7 {
+  grid-column: 7/8;
+}
+#theTable div.col8 {
+  grid-column: 8/9;
+}
+#theTable div.col9 {
+  grid-column: 9/10;
+}
+#theTable div.col10 {
+  grid-column: 10/11;
+}
+#theTable div.col11 {
+  grid-column: 11/12;
+}
+#theTable div.col12 {
+  grid-column: 12/13;
+}
+#theTable div.col13 {
+  grid-column: 13/14;
+}
+#theTable div.col14 {
+  grid-column: 14/15;
+}
+#theTable div.col15 {
+  grid-column: 15/16;
+}
+#theTable div.col16 {
+  grid-column: 16/17;
+}
+#theTable div.col17 {
+  grid-column: 17/18;
+}
+#theTable div.col18 {
+  grid-column: 18/19;
+}
+#theTable div.col1:hover {
+  transform-origin: left;
+}
+#theTable div.col18:hover {
+  transform-origin: right;
+}
+#theTable div.col1:focus-within {
+  transform-origin: left;
+}
+#theTable div.col18:focus-within {
+  transform-origin: right;
+}
+
+#footer {
+  margin-top: 20px;
+  place-self: center end;
+}
+#footer a {
+  text-decoration: none;
+}
+
+/*LIGHT MODE*/
+body.light {
+  color: var(--text2);
+  background-color: var(--bg2);
+}
+body.light a {
+  color: blue;
+}
+body.light select {
+  background-color: var(--bg2);
+  color: var(--text2);
+}
+body.light #header {
+  /*nested paths with an id selector really aren't necessary here, but may be more readable*/
+}
+body.light #header #headerCell1 #card {
+  border-color: var(--text2);
+}
+body.light #details div {
+  background-color: var(--highlight2);
+}
+body.light #details div.selected, body.light #details div.clickable:hover {
+  background-color: blue;
+  color: var(--bg2);
+}
+
+/*WIDE MODE*/
+@media (min-aspect-ratio: 21/9) {
+  body {
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    place-items: start center;
+  }
+  body #lightMode {
+    margin: 0;
+    top: 2px;
+    right: 0;
+    font-size: 75%;
+    position: absolute;
+  }
+
+  #header {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #footer {
+    display: none;
+  }
+
+  #details {
+    column-count: 2;
+  }
+
+  #theTable {
+    grid-gap: 0;
+  }
+  #theTable > div:not([id^=controls]):not([id^=connector]) {
+    padding: 2px;
+  }
+  #theTable > div:not([id^=controls]):not([id^=connector]) span:nth-child(2) {
+    /*SYMBOL*/
+    font-size: 120%;
+  }
+}
+/*small mode*/
+@media only screen and (max-width: 1050px) {
+  body {
+    padding: 0px;
+  }
+
+  #header {
+    display: unset;
+  }
+
+  #details {
+    column-count: 2;
+  }
+
+  #theTable {
+    grid-gap: 0;
+  }
+
+  #theTable > div:not([id^=controls]):not([id^=connector]) {
+    padding: 2px;
+  }
+  #theTable > div:not([id^=controls]):not([id^=connector]) span:nth-child(2) {
+    /*SYMBOL*/
+    font-size: 120%;
+  }
+  #theTable > div:not([id^=controls]):not([id^=connector]) span:nth-child(3) {
+    /*NAME*/
+    display: none;
+  }
+  #theTable > div:not([id^=controls]):not([id^=connector]) span:nth-child(4) {
+    /*ATOMIC MASS*/
+    display: none;
+  }
+}
+/*medium mode*/
+@media only screen and (min-width: 1051px) and (max-width: 1599px) {
+  body {
+    padding: 10px;
+  }
+
+  #details {
+    column-gap: 0px;
+  }
+
+  #theTable {
+    grid-gap: 1px;
+  }
+  #theTable > div:not([id^=controls]):not([id^=connector]) {
+    padding: 1px;
+  }
+  #theTable > div:not([id^=controls]):not([id^=connector]) span:nth-child(2) {
+    /*SYMBOL*/
+    font-size: 150%;
+  }
+  #theTable > div:not([id^=controls]):not([id^=connector]) span:nth-child(3) {
+    /*NAME*/
+    font-size: 55%;
+  }
+  #theTable > div:not([id^=controls]):not([id^=connector]) span:nth-child(4) {
+    /*ATOMIC MASS*/
+    font-size: 55%;
+  }
+}
+/*large mode*/
+@media only screen and (min-width: 1500px) {
+  body {
+    padding: 25px;
+  }
+
+  #details {
+    column-gap: unset;
+  }
+
+  #card span:nth-child(2) {
+    font-size: 400%;
+  }
+
+  #theTable {
+    grid-gap: 3px;
+  }
+  #theTable > div:not([id^=controls]):not([id^=connector]) {
+    padding: 3px;
+  }
+  #theTable > div:not([id^=controls]):not([id^=connector]) span:nth-child(2) {
+    /*SYMBOL*/
+    font-size: 170%;
+  }
+  #theTable > div:not([id^=controls]):not([id^=connector]) span:nth-child(3) {
+    /*NAME*/
+    font-size: 75%;
+  }
+}

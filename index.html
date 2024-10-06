@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Explore the Elements - An Interactive Periodic Table</title>
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div title="toggle night/day" id="lightMode"><span>🌛️</span></div>
+<div id="header">
+    <div id="headerCell1">
+      <div id="card">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div id="summary"></div>
+    </div>
+    <div id="details"></div>
+  </div>
+<div id="theTable">
+      <div id="H" class="row1 col1 diatomic-nonmetal">
+          <span>1</span>
+          <span>H</span>
+          <span>Hydrogen</span>
+          <span>1.008</span>
+      </div>
+      <div id="He" class="row1 col18 noble-gas">
+          <span>2</span>
+          <span>He</span>
+          <span>Helium</span>
+          <span>4.0026</span>
+      </div>
+      <div id="Li" class="row2 col1 alkali-metal">
+          <span>3</span>
+          <span>Li</span>
+          <span>Lithium</span>
+          <span>6.94</span>
+      </div>
+      <div id="Be" class="row2 col2 alkaline-earth-metal">
+          <span>4</span>
+          <span>Be</span>
+          <span>Beryllium</span>
+          <span>9.01218</span>
+      </div>
+      <div id="B" class="row2 col13 metalloid">
+          <span>5</span>
+          <span>B</span>
+          <span>Boron</span>
+          <span>10.81</span>
+      </div>
+      <div id="C" class="row2 col14 polyatomic-nonmetal">
+          <span>6</span>
+          <span>C</span>
+          <span>Carbon</span>
+          <span>12.011</span>
+      </div>
+      <div id="N" class="row2 col15 diatomic-nonmetal">
+          <span>7</span>
+          <span>N</span>
+          <span>Nitrogen</span>
+          <span>14.007</span>
+      </div>
+      <div id="O" class="row2 col16 diatomic-nonmetal">
+          <span>8</span>
+          <span>O</span>
+          <span>Oxygen</span>
+          <span>15.999</span>
+      </div>
+      <div id="F" class="row2 col17 diatomic-nonmetal">
+          <span>9</span>
+          <span>F</span>
+          <span>Fluorine</span>
+          <span>18.9984</span>
+      </div>
+      <div id="Ne" class="row2 col18 noble-gas">
+          <span>10</span>
+          <span>Ne</span>
+          <span>Neon</span>
+          <span>20.1798</span>
+      </div>
+      <div id="Na" class="row3 col1 alkali-metal">
+          <span>11</span>
+          <span>Na</span>
+          <span>Sodium</span>
+          <span>22.9898</span>
+      </div>
+      <div id="Mg" class="row3 col2 alkaline-earth-metal">
+          <span>12</span>
+          <span>Mg</span>
+          <span>Magnesium</span>
+          <span>24.305</span>
+      </div>
+      <div id="Al" class="row3 col13 post-transition-metal">
+          <span>13</span>
+          <span>Al</span>
+          <span>Aluminium</span>
+          <span>26.9815</span>
+      </div>
+      <div id="Si" class="row3 col14 metalloid">
+          <span>14</span>
+          <span>Si</span>
+          <span>Silicon</span>
+          <span>28.085</span>
+      </div>
+      <div id="P" class="row3 col15 polyatomic-nonmetal">
+          <span>15</span>
+          <span>P</span>
+          <span>Phosphorus</span>
+          <span>30.9738</span>
+      </div>
+      <div id="S" class="row3 col16 polyatomic-nonmetal">
+          <span>16</span>
+          <span>S</span>
+          <span>Sulfur</span>
+          <span>32.06</span>
+      </div>
+      <div id="Cl" class="row3 col17 diatomic-nonmetal">
+          <span>17</span>
+          <span>Cl</span>
+          <span>Chlorine</span>
+          <span>35.45</span>
+      </div>
+      <div id="Ar" class="row3 col18 noble-gas">
+          <span>18</span>
+          <span>Ar</span>
+          <span>Argon</span>
+          <span>39.9481</span>
+      </div>
+      <div id="K" class="row4 col1 alkali-metal">
+          <span>19</span>
+          <span>K</span>
+          <span>Potassium</span>
+          <span>39.0983</span>
+      </div>
+      <div id="Ca" class="row4 col2 alkaline-earth-metal">
+          <span>20</span>
+          <span>Ca</span>
+          <span>Calcium</span>
+          <span>40.0784</span>
+      </div>
+      <div id="Sc" class="row4 col3 transition-metal">
+          <span>21</span>
+          <span>Sc</span>
+          <span>Scandium</span>
+          <span>44.9559</span>
+      </div>
+      <div id="Ti" class="row4 col4 transition-metal">
+          <span>22</span>
+          <span>Ti</span>
+          <span>Titanium</span>
+          <span>47.8671</span>
+      </div>
+      <div id="V" class="row4 col5 transition-metal">
+          <span>23</span>
+          <span>V</span>
+          <span>Vanadium</span>
+          <span>50.9415</span>
+      </div>
+      <div id="Cr" class="row4 col6 transition-metal">
+          <span>24</span>
+          <span>Cr</span>
+          <span>Chromium</span>
+          <span>51.9962</span>
+      </div>
+      <div id="Mn" class="row4 col7 transition-metal">
+          <span>25</span>
+          <span>Mn</span>
+          <span>Manganese</span>
+          <span>54.9380</span>
+      </div>
+      <div id="Fe" class="row4 col8 transition-metal">
+          <span>26</span>
+          <span>Fe</span>
+          <span>Iron</span>
+          <span>55.8452</span>
+      </div>
+      <div id="Co" class="row4 col9 transition-metal">
+          <span>27</span>
+          <span>Co</span>
+          <span>Cobalt</span>
+          <span>58.9332</span>
+      </div>
+      <div id="Ni" class="row4 col10 transition-metal">
+          <span>28</span>
+          <span>Ni</span>
+          <span>Nickel</span>
+          <span>58.6934</span>
+      </div>
+      <div id="Cu" class="row4 col11 transition-metal">
+          <span>29</span>
+          <span>Cu</span>
+          <span>Copper</span>
+          <span>63.5463</span>
+      </div>
+      <div id="Zn" class="row4 col12 transition-metal">
+          <span>30</span>
+          <span>Zn</span>
+          <span>Zinc</span>
+          <span>65.382</span>
+      </div>
+      <div id="Ga" class="row4 col13 post-transition-metal">
+          <span>31</span>
+          <span>Ga</span>
+          <span>Gallium</span>
+          <span>69.7231</span>
+      </div>
+      <div id="Ge" class="row4 col14 metalloid">
+          <span>32</span>
+          <span>Ge</span>
+          <span>Germanium</span>
+          <span>72.6308</span>
+      </div>
+      <div id="As" class="row4 col15 metalloid">
+          <span>33</span>
+          <span>As</span>
+          <span>Arsenic</span>
+          <span>74.9216</span>
+      </div>
+      <div id="Se" class="row4 col16 polyatomic-nonmetal">
+          <span>34</span>
+          <span>Se</span>
+          <span>Selenium</span>
+          <span>78.9718</span>
+      </div>
+      <div id="Br" class="row4 col17 diatomic-nonmetal">
+          <span>35</span>
+          <span>Br</span>
+          <span>Bromine</span>
+          <span>79.904</span>
+      </div>
+      <div id="Kr" class="row4 col18 noble-gas">
+          <span>36</span>
+          <span>Kr</span>
+          <span>Krypton</span>
+          <span>83.7982</span>
+      </div>
+      <div id="Rb" class="row5 col1 alkali-metal">
+          <span>37</span>
+          <span>Rb</span>
+          <span>Rubidium</span>
+          <span>85.4678</span>
+      </div>
+      <div id="Sr" class="row5 col2 alkaline-earth-metal">
+          <span>38</span>
+          <span>Sr</span>
+          <span>Strontium</span>
+          <span>87.621</span>
+      </div>
+      <div id="Y" class="row5 col3 transition-metal">
+          <span>39</span>
+          <span>Y</span>
+          <span>Yttrium</span>
+          <span>88.9058</span>
+      </div>
+      <div id="Zr" class="row5 col4 transition-metal">
+          <span>40</span>
+          <span>Zr</span>
+          <span>Zirconium</span>
+          <span>91.2242</span>
+      </div>
+      <div id="Nb" class="row5 col5 transition-metal">
+          <span>41</span>
+          <span>Nb</span>
+          <span>Niobium</span>
+          <span>92.9064</span>
+      </div>
+      <div id="Mo" class="row5 col6 transition-metal">
+          <span>42</span>
+          <span>Mo</span>
+          <span>Molybdenum</span>
+          <span>95.951</span>
+      </div>
+      <div id="Tc" class="row5 col7 transition-metal">
+          <span>43</span>
+          <span>Tc</span>
+          <span>Technetium</span>
+          <span>98</span>
+      </div>
+      <div id="Ru" class="row5 col8 transition-metal">
+          <span>44</span>
+          <span>Ru</span>
+          <span>Ruthenium</span>
+          <span>101.072</span>
+      </div>
+      <div id="Rh" class="row5 col9 transition-metal">
+          <span>45</span>
+          <span>Rh</span>
+          <span>Rhodium</span>
+          <span>102.9055</span>
+      </div>
+      <div id="Pd" class="row5 col10 transition-metal">
+          <span>46</span>
+          <span>Pd</span>
+          <span>Palladium</span>
+          <span>106.421</span>
+      </div>
+      <div id="Ag" class="row5 col11 transition-metal">
+          <span>47</span>
+          <span>Ag</span>
+          <span>Silver</span>
+          <span>107.8682</span>
+      </div>
+      <div id="Cd" class="row5 col12 transition-metal">
+          <span>48</span>
+          <span>Cd</span>
+          <span>Cadmium</span>
+          <span>112.4144</span>
+      </div>
+      <div id="In" class="row5 col13 post-transition-metal">
+          <span>49</span>
+          <span>In</span>
+          <span>Indium</span>
+          <span>114.8181</span>
+      </div>
+      <div id="Sn" class="row5 col14 post-transition-metal">
+          <span>50</span>
+          <span>Sn</span>
+          <span>Tin</span>
+          <span>118.7107</span>
+      </div>
+      <div id="Sb" class="row5 col15 metalloid">
+          <span>51</span>
+          <span>Sb</span>
+          <span>Antimony</span>
+          <span>121.7601</span>
+      </div>
+      <div id="Te" class="row5 col16 metalloid">
+          <span>52</span>
+          <span>Te</span>
+          <span>Tellurium</span>
+          <span>127.603</span>
+      </div>
+      <div id="I" class="row5 col17 diatomic-nonmetal">
+          <span>53</span>
+          <span>I</span>
+          <span>Iodine</span>
+          <span>126.9045</span>
+      </div>
+      <div id="Xe" class="row5 col18 noble-gas">
+          <span>54</span>
+          <span>Xe</span>
+          <span>Xenon</span>
+          <span>131.2936</span>
+      </div>
+      <div id="Cs" class="row6 col1 alkali-metal">
+          <span>55</span>
+          <span>Cs</span>
+          <span>Cesium</span>
+          <span>132.9055</span>
+      </div>
+      <div id="Ba" class="row6 col2 alkaline-earth-metal">
+          <span>56</span>
+          <span>Ba</span>
+          <span>Barium</span>
+          <span>137.3277</span>
+      </div>
+      <div id="La" class="row9 col3 lanthanide">
+          <span>57</span>
+          <span>La</span>
+          <span>Lanthanum</span>
+          <span>138.9055</span>
+      </div>
+      <div id="Ce" class="row9 col4 lanthanide">
+          <span>58</span>
+          <span>Ce</span>
+          <span>Cerium</span>
+          <span>140.1161</span>
+      </div>
+      <div id="Pr" class="row9 col5 lanthanide">
+          <span>59</span>
+          <span>Pr</span>
+          <span>Praseodymium</span>
+          <span>140.9077</span>
+      </div>
+      <div id="Nd" class="row9 col6 lanthanide">
+          <span>60</span>
+          <span>Nd</span>
+          <span>Neodymium</span>
+          <span>144.2423</span>
+      </div>
+      <div id="Pm" class="row9 col7 lanthanide">
+          <span>61</span>
+          <span>Pm</span>
+          <span>Promethium</span>
+          <span>145</span>
+      </div>
+      <div id="Sm" class="row9 col8 lanthanide">
+          <span>62</span>
+          <span>Sm</span>
+          <span>Samarium</span>
+          <span>150.362</span>
+      </div>
+      <div id="Eu" class="row9 col9 lanthanide">
+          <span>63</span>
+          <span>Eu</span>
+          <span>Europium</span>
+          <span>151.9641</span>
+      </div>
+      <div id="Gd" class="row9 col10 lanthanide">
+          <span>64</span>
+          <span>Gd</span>
+          <span>Gadolinium</span>
+          <span>157.253</span>
+      </div>
+      <div id="Tb" class="row9 col11 lanthanide">
+          <span>65</span>
+          <span>Tb</span>
+          <span>Terbium</span>
+          <span>158.9254</span>
+      </div>
+      <div id="Dy" class="row9 col12 lanthanide">
+          <span>66</span>
+          <span>Dy</span>
+          <span>Dysprosium</span>
+          <span>162.5001</span>
+      </div>
+      <div id="Ho" class="row9 col13 lanthanide">
+          <span>67</span>
+          <span>Ho</span>
+          <span>Holmium</span>
+          <span>164.9303</span>
+      </div>
+      <div id="Er" class="row9 col14 lanthanide">
+          <span>68</span>
+          <span>Er</span>
+          <span>Erbium</span>
+          <span>167.2593</span>
+      </div>
+      <div id="Tm" class="row9 col15 lanthanide">
+          <span>69</span>
+          <span>Tm</span>
+          <span>Thulium</span>
+          <span>168.9342</span>
+      </div>
+      <div id="Yb" class="row9 col16 lanthanide">
+          <span>70</span>
+          <span>Yb</span>
+          <span>Ytterbium</span>
+          <span>173.0451</span>
+      </div>
+      <div id="Lu" class="row9 col17 lanthanide">
+          <span>71</span>
+          <span>Lu</span>
+          <span>Lutetium</span>
+          <span>174.9668</span>
+      </div>
+      <div id="Hf" class="row6 col4 transition-metal">
+          <span>72</span>
+          <span>Hf</span>
+          <span>Hafnium</span>
+          <span>178.492</span>
+      </div>
+      <div id="Ta" class="row6 col5 transition-metal">
+          <span>73</span>
+          <span>Ta</span>
+          <span>Tantalum</span>
+          <span>180.9479</span>
+      </div>
+      <div id="W" class="row6 col6 transition-metal">
+          <span>74</span>
+          <span>W</span>
+          <span>Tungsten</span>
+          <span>183.841</span>
+      </div>
+      <div id="Re" class="row6 col7 transition-metal">
+          <span>75</span>
+          <span>Re</span>
+          <span>Rhenium</span>
+          <span>186.2071</span>
+      </div>
+      <div id="Os" class="row6 col8 transition-metal">
+          <span>76</span>
+          <span>Os</span>
+          <span>Osmium</span>
+          <span>190.233</span>
+      </div>
+      <div id="Ir" class="row6 col9 transition-metal">
+          <span>77</span>
+          <span>Ir</span>
+          <span>Iridium</span>
+          <span>192.2173</span>
+      </div>
+      <div id="Pt" class="row6 col10 transition-metal">
+          <span>78</span>
+          <span>Pt</span>
+          <span>Platinum</span>
+          <span>195.0849</span>
+      </div>
+      <div id="Au" class="row6 col11 transition-metal">
+          <span>79</span>
+          <span>Au</span>
+          <span>Gold</span>
+          <span>196.9666</span>
+      </div>
+      <div id="Hg" class="row6 col12 transition-metal">
+          <span>80</span>
+          <span>Hg</span>
+          <span>Mercury</span>
+          <span>200.5923</span>
+      </div>
+      <div id="Tl" class="row6 col13 post-transition-metal">
+          <span>81</span>
+          <span>Tl</span>
+          <span>Thallium</span>
+          <span>204.38</span>
+      </div>
+      <div id="Pb" class="row6 col14 post-transition-metal">
+          <span>82</span>
+          <span>Pb</span>
+          <span>Lead</span>
+          <span>207.21</span>
+      </div>
+      <div id="Bi" class="row6 col15 post-transition-metal">
+          <span>83</span>
+          <span>Bi</span>
+          <span>Bismuth</span>
+          <span>208.9804</span>
+      </div>
+      <div id="Po" class="row6 col16 post-transition-metal">
+          <span>84</span>
+          <span>Po</span>
+          <span>Polonium</span>
+          <span>209</span>
+      </div>
+      <div id="At" class="row6 col17 metalloid">
+          <span>85</span>
+          <span>At</span>
+          <span>Astatine</span>
+          <span>210</span>
+      </div>
+      <div id="Rn" class="row6 col18 noble-gas">
+          <span>86</span>
+          <span>Rn</span>
+          <span>Radon</span>
+          <span>222</span>
+      </div>
+      <div id="Fr" class="row7 col1 alkali-metal">
+          <span>87</span>
+          <span>Fr</span>
+          <span>Francium</span>
+          <span>223</span>
+      </div>
+      <div id="Ra" class="row7 col2 alkaline-earth-metal">
+          <span>88</span>
+          <span>Ra</span>
+          <span>Radium</span>
+          <span>226</span>
+      </div>
+      <div id="Ac" class="row10 col3 actinide">
+          <span>89</span>
+          <span>Ac</span>
+          <span>Actinium</span>
+          <span>227</span>
+      </div>
+      <div id="Th" class="row10 col4 actinide">
+          <span>90</span>
+          <span>Th</span>
+          <span>Thorium</span>
+          <span>232.0377</span>
+      </div>
+      <div id="Pa" class="row10 col5 actinide">
+          <span>91</span>
+          <span>Pa</span>
+          <span>Protactinium</span>
+          <span>231.0359</span>
+      </div>
+      <div id="U" class="row10 col6 actinide">
+          <span>92</span>
+          <span>U</span>
+          <span>Uranium</span>
+          <span>238.0289</span>
+      </div>
+      <div id="Np" class="row10 col7 actinide">
+          <span>93</span>
+          <span>Np</span>
+          <span>Neptunium</span>
+          <span>237</span>
+      </div>
+      <div id="Pu" class="row10 col8 actinide">
+          <span>94</span>
+          <span>Pu</span>
+          <span>Plutonium</span>
+          <span>244</span>
+      </div>
+      <div id="Am" class="row10 col9 actinide">
+          <span>95</span>
+          <span>Am</span>
+          <span>Americium</span>
+          <span>243</span>
+      </div>
+      <div id="Cm" class="row10 col10 actinide">
+          <span>96</span>
+          <span>Cm</span>
+          <span>Curium</span>
+          <span>247</span>
+      </div>
+      <div id="Bk" class="row10 col11 actinide">
+          <span>97</span>
+          <span>Bk</span>
+          <span>Berkelium</span>
+          <span>247</span>
+      </div>
+      <div id="Cf" class="row10 col12 actinide">
+          <span>98</span>
+          <span>Cf</span>
+          <span>Californium</span>
+          <span>251</span>
+      </div>
+      <div id="Es" class="row10 col13 actinide">
+          <span>99</span>
+          <span>Es</span>
+          <span>Einsteinium</span>
+          <span>252</span>
+      </div>
+      <div id="Fm" class="row10 col14 actinide">
+          <span>100</span>
+          <span>Fm</span>
+          <span>Fermium</span>
+          <span>257</span>
+      </div>
+      <div id="Md" class="row10 col15 actinide">
+          <span>101</span>
+          <span>Md</span>
+          <span>Mendelevium</span>
+          <span>258</span>
+      </div>
+      <div id="No" class="row10 col16 actinide">
+          <span>102</span>
+          <span>No</span>
+          <span>Nobelium</span>
+          <span>259</span>
+      </div>
+      <div id="Lr" class="row10 col17 actinide">
+          <span>103</span>
+          <span>Lr</span>
+          <span>Lawrencium</span>
+          <span>266</span>
+      </div>
+      <div id="Rf" class="row7 col4 transition-metal">
+          <span>104</span>
+          <span>Rf</span>
+          <span>Rutherfordium</span>
+          <span>267</span>
+      </div>
+      <div id="Db" class="row7 col5 transition-metal">
+          <span>105</span>
+          <span>Db</span>
+          <span>Dubnium</span>
+          <span>268</span>
+      </div>
+      <div id="Sg" class="row7 col6 transition-metal">
+          <span>106</span>
+          <span>Sg</span>
+          <span>Seaborgium</span>
+          <span>269</span>
+      </div>
+      <div id="Bh" class="row7 col7 transition-metal">
+          <span>107</span>
+          <span>Bh</span>
+          <span>Bohrium</span>
+          <span>270</span>
+      </div>
+      <div id="Hs" class="row7 col8 transition-metal">
+          <span>108</span>
+          <span>Hs</span>
+          <span>Hassium</span>
+          <span>269</span>
+      </div>
+      <div id="Mt" class="row7 col9 unknown">
+          <span>109</span>
+          <span>Mt</span>
+          <span>Meitnerium</span>
+          <span>278</span>
+      </div>
+      <div id="Ds" class="row7 col10 unknown">
+          <span>110</span>
+          <span>Ds</span>
+          <span>Darmstadtium</span>
+          <span>281</span>
+      </div>
+      <div id="Rg" class="row7 col11 unknown">
+          <span>111</span>
+          <span>Rg</span>
+          <span>Roentgenium</span>
+          <span>282</span>
+      </div>
+      <div id="Cn" class="row7 col12 unknown">
+          <span>112</span>
+          <span>Cn</span>
+          <span>Copernicium</span>
+          <span>285</span>
+      </div>
+      <div id="Nh" class="row7 col13 unknown">
+          <span>113</span>
+          <span>Nh</span>
+          <span>Nihonium</span>
+          <span>286</span>
+      </div>
+      <div id="Fl" class="row7 col14 unknown">
+          <span>114</span>
+          <span>Fl</span>
+          <span>Flerovium</span>
+          <span>289</span>
+      </div>
+      <div id="Mc" class="row7 col15 unknown">
+          <span>115</span>
+          <span>Mc</span>
+          <span>Moscovium</span>
+          <span>289</span>
+      </div>
+      <div id="Lv" class="row7 col16 unknown">
+          <span>116</span>
+          <span>Lv</span>
+          <span>Livermorium</span>
+          <span>293</span>
+      </div>
+      <div id="Ts" class="row7 col17 unknown">
+          <span>117</span>
+          <span>Ts</span>
+          <span>Tennessine</span>
+          <span>294</span>
+      </div>
+      <div id="Og" class="row7 col18 unknown">
+          <span>118</span>
+          <span>Og</span>
+          <span>Oganesson</span>
+          <span>294</span>
+      </div>
+     <div id="Uue" class="row8 col1 unknown">
+          <span>119</span>
+          <span>Uue</span>
+          <span>Ununennium</span>
+          <span>315</span>
+      </div>
+    <div id="connector">
+      <div>57-71</div>
+      <div>89-103</div>
+      <div>⇩️</div>
+    </div>
+  <div id="controls">
+    <div><label for="search">Search:</label><input type="text" id="search"/><button id="clearBtn">clear</button></div>
+
+     <div id="colors"><label for="startColor" title="starting color for ranges">Min</label><input type="color" id="startColor" value="#ffffff"/>
+        <label for="endColor" title="ending color for ranges">Max</label><input type="color" id="endColor" value="#000000"/></div>
+    
+  </div>
+    
+</div>
+<div id="footer">
+  <!--<a target="_blank" rel="noreferrer" href="http://twitter.com/sweaver2112">twitter</a> ⦿-->
+  <a target="_blank" href="https://www.instagram.com/sweaver2112/">@sweaver2112</a> 
+</div>
+<!-- partial -->
+  <script src='https://assets.codepen.io/1197275/pTableV1.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
